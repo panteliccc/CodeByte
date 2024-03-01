@@ -1,6 +1,6 @@
-.link:hover {
-    transition: all .3s;
-    color: var(--accent);
+.link {
+    font-weight: 600;
+    font-size:larger;
 }
 @media screen and (max-width:760px) {
     .link {
