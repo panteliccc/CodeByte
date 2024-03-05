@@ -4,13 +4,13 @@ import styles from './AuthLinks.module.css'
 function AuthLinks() {
   const status : string = "notauthenticated"
   return <>
-  {status==="notauthenticated" ?(
+  {status==="authenticated" ?(
   <Link href='/login'  className={styles.link}>Login</Link>):
   (
-    <>
+    <div className={`flex gap-5`}>
         <Link href='/write' className={styles.link}>Write</Link>
         <span  className={styles.link}>Logout</span>
-    </>)}
+    </div>)}
   </>
 };
 

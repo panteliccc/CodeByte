@@ -32,24 +32,21 @@ function NavBar() {
             <li>
               <Link 
               href={'/'} 
-              className={styles.link}
-              onClick={()=>setOpen(!open)}>
+              className={styles.link}>
                 Home
               </Link>
             </li>
             <li>
               <Link 
               href={'/'} 
-              className={styles.link}
-              onClick={()=>setOpen(!open)}>
+              className={styles.link}>
                 Contact
               </Link>
             </li>
             <li>
               <Link 
               href={'/'} 
-              className={styles.link}
-              onClick={()=>setOpen(!open)}>                
+              className={styles.link}>                
                 About
               </Link>
             </li>
