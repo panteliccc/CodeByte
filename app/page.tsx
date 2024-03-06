@@ -11,7 +11,6 @@ export default function Home() {
       <CategoryList/>
       <div className="">
         <CardList/>
-        <Menu/>
       </div>
     </div>
   );

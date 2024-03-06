@@ -6,12 +6,10 @@ import AuthLinks from '../authlinks/AuthLinks'
 import Image from 'next/image'
 
 function NavBar() {
-  const [width,setWidth] = useState<number>(window.innerWidth)
-
-  const [open,setOpen] = useState<Boolean>(width > 760)
+  const [open,setOpen] = useState<Boolean>(true)
   useEffect(() => {
     const handleResize = () => {
-      setOpen(window.innerWidth > 760);
+      setOpen(window.innerWidth > 768);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);

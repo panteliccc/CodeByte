@@ -3,7 +3,7 @@ import styles from'./footer.module.css'
 import Link from 'next/link'
 function Footer() {
   return (
-    <div className={`container flex py-5 justify-between ${styles.footer} `}>
+    <div className={`container flex py-5 justify-between ${styles.footer} footer`}>
       <div className={styles.logo}>
         <span className={` font-bold text-3xl`}>CodeByte</span>
       </div>
