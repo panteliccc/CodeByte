@@ -1,11 +1,21 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './style.module.css'
 import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 function Login() {
-  const {data,status} = useSession()
-  console.log(data,status);
-  
+  const { status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.push('/');
+    }
+  }, [status, router]);
+
+  if(status === "loading") {
+    return <div>Loading...</div>
+  }
   return (
     <div className={`container flex flex-col justify-center items-center gap-16 ${styles.login}`} >
       <div 

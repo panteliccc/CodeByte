@@ -6,13 +6,15 @@ import AuthLinks from '../authlinks/AuthLinks'
 import Image from 'next/image'
 
 function NavBar() {
-  const [open,setOpen] = useState<Boolean>(true)
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
-    const handleResize = () => {
+    const checkWidthAndUpdateOpen = () => {
       setOpen(window.innerWidth > 768);
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    checkWidthAndUpdateOpen();
+    window.addEventListener('resize', checkWidthAndUpdateOpen);
+    return () => window.removeEventListener('resize', checkWidthAndUpdateOpen);
   }, []);
   return (
     <div className={`container m-auto py-4 px-1 flex items-center justify-between`}>
