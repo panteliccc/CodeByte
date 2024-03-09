@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function CategoryList() {
   return (
@@ -7,10 +7,10 @@ function CategoryList() {
         Computer
       </div>
       <div className={`text-white bg-black text-lg px-3 py-2 rounded-md`}>
-      Programming
+        Programming
       </div>
       <div className={`text-white bg-black text-lg px-3 py-2 rounded-md`}>
-      News
+        News
       </div>
       <div className={`text-white bg-black text-lg px-2 py-2 rounded-md`}>
         BackEnd
@@ -19,7 +19,7 @@ function CategoryList() {
         FrontEnd
       </div>
     </div>
-  )
+  );
 }
 
-export default CategoryList
+export default CategoryList;

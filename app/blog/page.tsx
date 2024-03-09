@@ -1,12 +1,12 @@
-import CardList from '@/components/cardlist/CardList'
-import React from 'react'
+import CardList from "@/components/cardlist/CardList";
+import React from "react";
 
 function Blog() {
   return (
     <div className={`container`}>
-        <CardList/>
+      <CardList />
     </div>
-  )
+  );
 }
 
-export default Blog
+export default Blog;

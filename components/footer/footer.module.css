@@ -1,19 +1,19 @@
-@media screen and (max-width:520px)  {
-    .footer {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10;
-        text-align: center;
-    }
-    .logo {
-        margin-bottom: 20px;
-    }
-    .footer .links {
-        flex-direction: column;
-        gap: 0;
-    }
-    .footer .links ul:first-child {
-        margin-bottom: 20px;
-    }
+@media screen and (max-width: 520px) {
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10;
+    text-align: center;
+  }
+  .logo {
+    margin-bottom: 20px;
+  }
+  .footer .links {
+    flex-direction: column;
+    gap: 0;
+  }
+  .footer .links ul:first-child {
+    margin-bottom: 20px;
+  }
 }

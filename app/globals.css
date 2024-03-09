@@ -8,21 +8,14 @@
   --primary: hsl(248, 54%, 51%);
   --secondary: hsl(248, 75%, 75%);
   --accent: hsl(248, 95%, 60%);
-  
 }
-
 
 body {
   color: var(--text);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--background)
-    )
+  background: linear-gradient(to bottom, transparent, var(--background))
     rgb(var(--background));
 }
 
-
-.footer{
+.footer {
   display: flex;
 }

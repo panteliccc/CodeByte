@@ -12,19 +12,20 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
 model Account {
-  id                 String  @id @default(cuid()) @map("_id")
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String? 
-  access_token       String?  
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? 
-  session_state      String?
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -42,53 +43,51 @@ model Session {
 model User {
   id            String    @id @default(cuid()) @map("_id")
   name          String?
-  email         String   @unique
+  email         String    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  Posts Post[]
-  comments Comment[]
-
+  Posts         Post[]
+  comments      Comment[]
 }
 
 model VerificationToken {
-  identifier String @id @map("_id")
+  identifier String   @id @map("_id")
   token      String   @unique
   expires    DateTime
 
   @@unique([identifier, token])
 }
 
-model Category{
-  id String @id @default(cuid()) @map("_id")
-  slug String @unique
+model Category {
+  id    String  @id @default(cuid()) @map("_id")
+  slug  String  @unique
   title String
-  img String?
+  img   String?
   Posts Post[]
 }
 
-model Post{
-  id String @id @default(cuid()) @map("_id")
-  slug String @unique
-  title String
-  desc String
-  img String?
-  views Int @default(0)
-  catSlug String
-  cat Category @relation(fields: [catSlug], references: [slug])
+model Post {
+  id       String    @id @default(cuid()) @map("_id")
+  slug     String    @unique
+  title    String
+  desc     String
+  img      String?
+  views    Int       @default(0)
+  catSlug  String
+  cat      Category  @relation(fields: [catSlug], references: [slug])
   userEmil String
-  user User @relation(fields: [userEmil], references: [email])
+  user     User      @relation(fields: [userEmil], references: [email])
   comments Comment[]
 }
 
-
-model Comment{
-  id String @id @default(cuid()) @map("_id")
-  desc String
-  img String?
+model Comment {
+  id       String  @id @default(cuid()) @map("_id")
+  desc     String
+  img      String?
   userEmil String
-  user User @relation(fields: [userEmil], references: [email])
+  user     User    @relation(fields: [userEmil], references: [email])
   postSlug String
-  post Post @relation(fields: [postSlug], references: [slug])
+  post     Post    @relation(fields: [postSlug], references: [slug])
 }

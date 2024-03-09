@@ -1,9 +1,9 @@
 .link {
-    font-weight: 600;
-    font-size:larger;
+  font-weight: 600;
+  font-size: larger;
 }
-@media screen and (max-width:760px) {
-    .link {
-        color: var(--background);
-    }
+@media screen and (max-width: 760px) {
+  .link {
+    color: var(--background);
+  }
 }

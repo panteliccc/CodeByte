@@ -7,10 +7,10 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className={`container`}>
-      <Featured/>
-      <CategoryList/>
+      <Featured />
+      <CategoryList />
       <div className="">
-        <CardList/>
+        <CardList />
       </div>
     </div>
   );
