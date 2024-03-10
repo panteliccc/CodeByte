@@ -1,23 +1,35 @@
-import React from "react";
+import Link from "next/link";
 
-function CategoryList() {
+interface Category {
+  _id: string;
+  slug: string;
+  title: string;
+}
+
+const getData = async () => {
+  const res = await fetch(`http://localhost:3000/api/categories`);
+
+  if (!res.ok) {
+    throw new Error("Failed!");
+  }
+
+  return res.json();
+};
+
+async function CategoryList() {
+  const data: { categories: Category[] } = await getData();
+
   return (
     <div className={`container flex items-center gap-5 overflow-auto`}>
-      <div className={`text-white bg-black text-lg px-3 py-2 rounded-md`}>
-        Computer
-      </div>
-      <div className={`text-white bg-black text-lg px-3 py-2 rounded-md`}>
-        Programming
-      </div>
-      <div className={`text-white bg-black text-lg px-3 py-2 rounded-md`}>
-        News
-      </div>
-      <div className={`text-white bg-black text-lg px-2 py-2 rounded-md`}>
-        BackEnd
-      </div>
-      <div className={`text-white bg-black text-lg px-2 py-2 rounded-md`}>
-        FrontEnd
-      </div>
+      {data?.categories && data?.categories.map((item: any) => (
+        <Link
+          key={item.id}
+          href={`/${item.slug}`}
+          className={`text-white bg-black text-lg px-3 py-2 rounded-md`}
+        >
+          {item.title}
+        </Link>
+      ))}
     </div>
   );
 }

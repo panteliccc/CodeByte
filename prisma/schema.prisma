@@ -69,25 +69,27 @@ model Category {
 }
 
 model Post {
-  id       String    @id @default(cuid()) @map("_id")
-  slug     String    @unique
-  title    String
-  desc     String
-  img      String?
-  views    Int       @default(0)
-  catSlug  String
-  cat      Category  @relation(fields: [catSlug], references: [slug])
-  userEmil String
-  user     User      @relation(fields: [userEmil], references: [email])
-  comments Comment[]
+  id        String    @id @default(cuid()) @map("_id")
+  createdAt DateTime  @default(now())
+  slug      String    @unique
+  title     String
+  desc      String
+  img       String?
+  views     Int       @default(0)
+  catSlug   String
+  cat       Category  @relation(fields: [catSlug], references: [slug])
+  userEmil  String
+  user      User      @relation(fields: [userEmil], references: [email])
+  comments  Comment[]
 }
 
 model Comment {
-  id       String  @id @default(cuid()) @map("_id")
-  desc     String
-  img      String?
-  userEmil String
-  user     User    @relation(fields: [userEmil], references: [email])
-  postSlug String
-  post     Post    @relation(fields: [postSlug], references: [slug])
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  desc      String
+  img       String?
+  userEmil  String
+  user      User     @relation(fields: [userEmil], references: [email])
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug])
 }
