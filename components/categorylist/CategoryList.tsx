@@ -12,24 +12,24 @@ const getData = async () => {
   if (!res.ok) {
     throw new Error("Failed!");
   }
-
   return res.json();
 };
 
 async function CategoryList() {
-  const data: { categories: Category[] } = await getData();
-
+  const data: Category[] = await getData();
+  
   return (
     <div className={`container flex items-center gap-5 overflow-auto`}>
-      {data?.categories && data?.categories.map((item: any) => (
-        <Link
-          key={item.id}
-          href={`/${item.slug}`}
-          className={`text-white bg-black text-lg px-3 py-2 rounded-md`}
-        >
-          {item.title}
-        </Link>
-      ))}
+      {data &&
+        data?.map((item: any) => (
+          <Link
+            key={item.id}
+            href={`/blog/${item.slug}`}
+            className={`text-white bg-black text-lg px-3 py-2 rounded-md`}
+          >
+            {item.title}
+          </Link>
+        ))}
     </div>
   );
 }

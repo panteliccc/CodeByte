@@ -4,13 +4,17 @@ import Featured from "@/components/featured/Featured";
 import Menu from "@/components/menu/Menu";
 import Image from "next/image";
 
-export default function Home() {
+interface SearchParams {
+  page?: number;
+}
+export default function Home({ searchParams }: { searchParams: SearchParams }) {
+  const page = searchParams.page || 1;
   return (
     <div className={`container`}>
       <Featured />
       <CategoryList />
       <div className="">
-        <CardList />
+        <CardList page={page} />
       </div>
     </div>
   );
