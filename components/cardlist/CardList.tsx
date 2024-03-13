@@ -39,7 +39,6 @@ async function CardList(params: Params) {
   const hasPerv = POST_PER_PAGE * (parseInt(params.page) - 1) > 0;
   const hasNext = POST_PER_PAGE * (parseInt(params.page) - 1) + POST_PER_PAGE < data.count;
 
-  console.log(data.posts);
   
   return (
     <div className={`container py-10`}>

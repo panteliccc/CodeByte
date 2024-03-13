@@ -9,7 +9,6 @@ interface Props {
 
 function Pagination(props:Props) {
   const router = useRouter();
-  console.log(props.page);
   
   return (
     <div className={`container flex justify-between`}>

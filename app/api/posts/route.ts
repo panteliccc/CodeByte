@@ -7,13 +7,11 @@ export const GET = async (req: Request) => {
   const POST_PER_PAGE = 4;
 
   try {
-    const page = pageString ? parseInt(pageString) : 4;
+    const page = pageString ? parseInt(pageString,10) : 1 ;
     const query = {
       take: POST_PER_PAGE,
       skip: POST_PER_PAGE * (page - 1),
     }
-    console.log(query);
-    
     const [posts,count] = await prisma.$transaction([
       prisma.post.findMany(query),
       prisma.post.count(),
