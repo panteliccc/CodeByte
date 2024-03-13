@@ -16,18 +16,18 @@ interface Props {
 function Card(props: Props) {
   return (
     <div className={`container flex gap-10 items-center py-10 ${styles.card}`} key={props.id}>
-      {props.img && (
+      {
         <Image
-          src={props.img}
+          src={"/picture.jpg"}
           alt="Blog post picture"
           priority={true}
           width={500}
           height={400}
         />
-      )}
+      }
       <div className="flex flex-col gap-5">
         <span>
-          <span className={`font-bold`}>{props.createdAt.toString()}</span>-
+          <span className={`font-bold`}>{props.createdAt.toString().slice(0, 10)}</span>-
           <span>{props.catSlug}</span>
         </span>
         <h1 className={`text-4xl font-bold`}>{props.title}</h1>
