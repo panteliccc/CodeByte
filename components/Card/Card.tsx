@@ -31,8 +31,8 @@ function Card(props: Props) {
           <span>{props.catSlug}</span>
         </span>
         <h1 className={`text-4xl font-bold`}>{props.title}</h1>
-        <p className={`text-xl`}>{props.desc}</p>
-        <Link href={`/${props.slug}`} className={`bg-black text-white p-5 rounded-md w-32 text-center cursor-pointer`}>Read more</Link>
+        <p className={`text-xl`}>{props.desc.toString().slice(0, 60)}</p>
+        <Link href={`/posts/${props.slug}`} className={`bg-black text-white p-5 rounded-md w-32 text-center cursor-pointer`}>Read more</Link>
       </div>
     </div>
   );

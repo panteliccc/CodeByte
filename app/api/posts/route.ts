@@ -4,6 +4,7 @@ import prisma from "@/app/utils/connect";
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);
   const pageString = searchParams.get("page");
+  const cat = searchParams.get("cat");
   const POST_PER_PAGE = 4;
 
   try {
@@ -11,10 +12,17 @@ export const GET = async (req: Request) => {
     const query = {
       take: POST_PER_PAGE,
       skip: POST_PER_PAGE * (page - 1),
+      where:{
+        ...(cat && {catSlug: cat})
+      }
     }
     const [posts,count] = await prisma.$transaction([
       prisma.post.findMany(query),
-      prisma.post.count(),
+      prisma.post.count({
+        where:{
+          ...(cat && {catSlug: cat})
+        }
+      }),
     ])
     return NextResponse.json({posts,count}, { status: 200 });
   } catch (err) {   

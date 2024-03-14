@@ -21,11 +21,15 @@ interface Data {
 }
 interface Params {
   page: string;
+  cat: string;
 }
-const getData = async (page: number) => {
-  const res = await fetch(`http://localhost:3000/api/posts/?page=${page}}`,{
-    cache: "no-store"
-  });
+const getData = async (page: number, cat: string) => {
+  const res = await fetch(
+    `${process.env.BASE_URL}/api/posts/?cat=${cat || ""}&page=${page}}`,
+    {
+      cache: "no-store",
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Failed!");
@@ -35,13 +39,13 @@ const getData = async (page: number) => {
 };
 
 async function CardList(params: Params) {
-  const data: Data = await getData(parseInt(params.page));
+  const data: Data = await getData(parseInt(params.page), params.cat);
 
   const POST_PER_PAGE = 4;
   const hasPerv = POST_PER_PAGE * (parseInt(params.page) - 1) > 0;
-  const hasNext = POST_PER_PAGE * (parseInt(params.page) - 1) + POST_PER_PAGE < data.count;
+  const hasNext =
+    POST_PER_PAGE * (parseInt(params.page) - 1) + POST_PER_PAGE < data.count;
 
-  
   return (
     <div className={`container py-10`}>
       <h1 className={`text-4xl font-bold`}>Posts</h1>
@@ -62,7 +66,7 @@ async function CardList(params: Params) {
             />
           ))}
       </div>
-      <Pagination page={params.page} hasPrev={hasPerv} hasNext={hasNext} />
+      <Pagination page={params.page} cat={params.cat} hasPrev={hasPerv} hasNext={hasNext} />
     </div>
   );
 }

@@ -7,7 +7,7 @@ interface Category {
 }
 
 const getData = async () => {
-  const res = await fetch(`http://localhost:3000/api/categories`,{
+  const res = await fetch(`${process.env.BASE_URL}/api/categories`,{
     cache:"no-store"
   });
 
@@ -26,7 +26,7 @@ async function CategoryList() {
         data?.map((item: any) => (
           <Link
             key={item.id}
-            href={`/blog/${item.slug}`}
+            href={`/blog/?cat=${item.slug}`}
             className={`text-white bg-black text-lg px-3 py-2 rounded-md`}
           >
             {item.title}
