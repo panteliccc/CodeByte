@@ -10,10 +10,10 @@ function Comments() {
         <div className={`flex w-full items-start py-10 gap-5`}>
           <textarea
             placeholder="write a comment"
-            className={` w-5/6 border-2 border-black min-h-32`}
+            className={` w-5/6 border-2 border-text min-h-32`}
           />
           <button
-            className={`bg-black text-white p-5 rounded-md w-32 text-center cursor-pointer`}
+            className={`bg-text text-white p-5 rounded w-32 text-center cursor-pointer`}
           >
             Send
           </button>

@@ -3,17 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --text: hsl(240, 10%, 4%);
-  --background: hsl(252, 38%, 97%);
-  --primary: hsl(248, 54%, 51%);
-  --secondary: hsl(248, 75%, 75%);
-  --accent: hsl(248, 95%, 60%);
+  --text: #040b2f;
+  --background: hsl(216, 38%, 95%);
+  --primary: hsl(229, 93%, 24%);
+  --secondary: hsl(229, 55%, 55%);
+  --accent: #b4c4f8;
 }
 
 body {
   color: var(--text);
-  background: linear-gradient(to bottom, transparent, var(--background))
-    rgb(var(--background));
+  background: var(--background);
 }
 
 .footer {

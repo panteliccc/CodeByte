@@ -21,13 +21,13 @@ async function CategoryList() {
   const data: Category[] = await getData();
   
   return (
-    <div className={`container flex items-center gap-5 overflow-auto`}>
+    <div className={`container flex items-center gap-5 overflow-auto w-full`}>
       {data &&
         data?.map((item: any) => (
           <Link
             key={item.id}
             href={`/blog/?cat=${item.slug}`}
-            className={`text-white bg-black text-lg px-3 py-2 rounded-md`}
+            className={`text-white bg-text text-lg px-3 py-2 rounded-md`}
           >
             {item.title}
           </Link>
