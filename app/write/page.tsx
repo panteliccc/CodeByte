@@ -25,10 +25,10 @@ function Write() {
       <input
         type="text"
         placeholder="Title"
-        className={`w-full px-2 py-5 text-2xl border-black border-2`}
+        className={`w-full px-2 py-5 text-2xl border-text border-2 rounded`}
       />
       <div
-        className={`border-black border-2 p-5 flex items-start justify-between w-full`}
+        className={`border-text border-2 p-5 flex items-start justify-between w-full bg-white rounded`}
       >
         <button className={`w-1/12`}>
           <Image
@@ -44,7 +44,7 @@ function Write() {
           value={value}
           onChange={setValue}
           placeholder="Tell your story"
-          className={`  min-h-96 w-11/12`}
+          className={`  min-h-96 w-11/12 bg-white`}
         />
       </div>
     </div>

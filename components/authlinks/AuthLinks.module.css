@@ -2,6 +2,10 @@
   font-weight: 600;
   font-size: larger;
 }
+.link:hover {
+  color: var(--primary);
+  transition: all .3s;
+}
 @media screen and (max-width: 760px) {
   .link {
     color: var(--background);

@@ -41,7 +41,7 @@ const getData = async (page: number, cat: string) => {
 async function CardList(params: Params) {
   const data: Data = await getData(parseInt(params.page), params.cat);
 
-  const POST_PER_PAGE = 4;
+  const POST_PER_PAGE = 6;
   const hasPerv = POST_PER_PAGE * (parseInt(params.page) - 1) > 0;
   const hasNext =
     POST_PER_PAGE * (parseInt(params.page) - 1) + POST_PER_PAGE < data.count;
@@ -49,7 +49,7 @@ async function CardList(params: Params) {
   return (
     <div className={`container py-10`}>
       <h1 className={`text-4xl font-bold`}>Posts</h1>
-      <div className="flex items-start flex-col gap-1">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8 w-full">
         {data.posts &&
           data.posts.map((item: any) => (
             <Card

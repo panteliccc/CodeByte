@@ -12,16 +12,16 @@ function Pagination(props:Props) {
   const router = useRouter();
   
   return (
-    <div className={`container flex justify-between`}>
+    <div className={`container flex justify-center gap-4`}>
       <button
-        className={`bg-black text-white p-5 rounded-md w-36 text-center cursor-pointer  disabled:opacity-50 disabled:cursor-auto`}
+        className={`bg-text text-white p-5 rounded-md w-36 text-center cursor-pointer disabled:opacity-65 disabled:cursor-auto`}
         disabled={!props.hasPrev}
         onClick={()=>router.push(`?cat=${props.cat || ""}&page=${parseInt(props.page)-1}`)}
       >
         Previous
       </button>
       <button
-        className={`bg-black text-white p-5 rounded-md w-36 text-center cursor-pointer disabled:opacity-50 disabled:cursor-auto`}
+        className={`bg-text text-white p-5 rounded-md w-36 text-center cursor-pointer disabled:opacity-50 disabled:cursor-auto`}
         disabled={!props.hasNext}
         onClick={()=>router.push(`?cat=${props.cat || ""}&page=${parseInt(props.page)+1}`)}
       >

@@ -18,10 +18,12 @@ function NavBar() {
   }, []);
   return (
     <div
-      className={`container m-auto py-4 px-1 flex items-center justify-between`}
+      className={`container m-auto py-7 px-3 flex items-center justify-between bg-white`}
     >
       <div>
-        <span className={` font-bold text-3xl`}>CodeByte</span>
+        <Link href="/" className={` font-bold text-4xl`}>
+          codybyte. 
+        </Link>
       </div>
       <div className={styles.burger} onClick={() => setOpen(!open)}>
         <div className={styles.line}></div>

@@ -2,6 +2,10 @@
   font-weight: 600;
   font-size: larger;
 }
+.link:hover {
+  color: var(--primary);
+  transition: all .3s;
+}
 .line {
   background-color: rgba(0, 0, 0, 0.877);
   width: 30px;
