@@ -4,47 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 function Footer() {
   return (
-    /*<div
-      className={`container flex py-5 justify-between ${styles.footer} footer`}
-    >
-      <div className={styles.logo}>
-        <span className={` font-bold text-3xl`}>CodeByte</span>
-      </div>
-      <div className={`flex gap-10 ${styles.links}`}>
-        <ul className={`flex flex-col gap-2`}>
-          <li className={`font-bold text-xl`}>Links</li>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/">About</Link>
-          </li>
-          <li>
-            <Link href="/">Contact</Link>
-          </li>
-          <li>
-            <Link href="/">Blog</Link>
-          </li>
-        </ul>
-
-        <ul className={`flex flex-col gap-2`}>
-          <li className={`font-bold text-xl`}>Tags</li>
-          <li>
-            <Link href="/">Computer</Link>
-          </li>
-          <li>
-            <Link href="/">Programming</Link>
-          </li>
-          <li>
-            <Link href="/">News</Link>
-          </li>
-          <li>
-            <Link href="/">Blog</Link>
-          </li>
-        </ul>
-      </div>
-    </div>*/
-
     <footer className="bg-white dark:bg-gray-900">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
