@@ -1,7 +1,7 @@
 import CardList from "@/components/cardlist/CardList";
 import CategoryList from "@/components/categorylist/CategoryList";
 import Featured from "@/components/featured/Featured";
-import Menu from "@/components/menu/Menu";
+
 import Image from "next/image";
 
 interface SearchParams {

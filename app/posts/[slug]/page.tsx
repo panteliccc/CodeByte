@@ -15,7 +15,16 @@ interface Data {
   views: number;
   catSlug: string;
   userEmail: string;
+  user: User;
 }
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  emailVerified: boolean;
+  image: string;
+}
+
 const getData = async (slug: string) => {
   const res = await fetch(`${process.env.BASE_URL}/api/posts/${slug}`, {
     method: "GET",
@@ -31,43 +40,50 @@ const getData = async (slug: string) => {
 async function SinglePage({ params }: { params: Params }) {
   const { slug } = params;
 
-
   const data: Data = await getData(slug);
-
+  const desc ={__html:data?.desc};
   return (
-    <div className={`container py-7 flex flex-col gap-4`} key={data.id}>
+    <div className={`container py-7 flex flex-col gap-4`} key={data?.id}>
       <div className={`flex md:flex-row flex-col-reverse w-full`}>
         <div className={`flex justify-between flex-col gap-0`}>
           <h1 className={`text-2xl gap-5 md:gap-0 md:text-5xl font-bold`}>
-            {data.title}
+            {data?.title}
           </h1>
-          <div className="flex">
-            <Image
-              src={"/picture.jpg"}
-              alt="Blog post picture "
-              width={50}
-              height={50}
-              className={` rounded-full mr-3`}
-            />
+          <div className="flex" key={data?.user._id}> 
+            {data?.user.image && (
+              <Image
+                src={data?.user.image}
+                alt="user picture "
+                width={50}
+                height={50}
+                className={` rounded-full mr-3`}
+              />
+            )}
             <div className="flex flex-col gap-1">
               <span>
-                <span className={`font-bold`}>{data.createdAt.toString().slice(0, 10)}</span>-
-                <span>{data.catSlug}</span>
+                <span className={`font-bold`}>
+                  {data?.createdAt.toString().slice(0, 10)}
+                </span>
+                -<span>{data?.catSlug}</span>
               </span>
-              <span>Nikola Pantelic</span>
+              <span>{data?.user.name}</span>
             </div>
           </div>
         </div>
-        {data.img &&
-        <Image
-          src={data.img}
-          alt="Blog post picture "
-          width={800}
-          height={400}
-          className={`w-full md:w-3/4`}
-        />}
+        {data?.img && (
+          <Image
+            src={data?.img}
+            alt="Blog post picture "
+            width={800}
+            height={400}
+            className={`w-full md:w-3/4`}
+          />
+        )}
       </div>
-      <p className={`text-xl`}>{data.desc}</p>
+      <div
+        className={`text-xl`}
+        dangerouslySetInnerHTML={desc}
+      />
       <div>
         <Comments />
       </div>
