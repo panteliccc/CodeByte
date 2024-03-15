@@ -95,7 +95,11 @@ function Footer() {
             </div>
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">
+<<<<<<< HEAD
                 Follow me
+=======
+                Follow us
+>>>>>>> 22983f0dd985501c76819c64f9028b95f8ee3522
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-2">
