@@ -27,7 +27,6 @@ interface User {
 
 const getData = async (slug: string) => {
   const res = await fetch(`${process.env.BASE_URL}/api/posts/${slug}`, {
-    method: "GET",
     cache: "no-store",
   });
 
@@ -40,7 +39,7 @@ const getData = async (slug: string) => {
 async function SinglePage({ params }: { params: Params }) {
   const { slug } = params;
 
-  const data: Data = await getData(slug);
+  const data: Data = await getData(slug);  
   const desc ={__html:data?.desc};
   return (
     <div className={`container py-7 flex flex-col gap-4`} key={data?.id}>

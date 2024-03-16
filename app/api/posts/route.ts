@@ -9,15 +9,17 @@ export const GET = async (req: Request) => {
 
   try {
     const page = pageString ? parseInt(pageString,10) : 1 ;
-    const query = {
-      take: POST_PER_PAGE,
-      skip: POST_PER_PAGE * (page - 1),
-      where:{
-        ...(cat && {catSlug: cat})
-      }
-    }
     const [posts,count] = await prisma.$transaction([
-      prisma.post.findMany(query),
+      prisma.post.findMany({
+        take: POST_PER_PAGE,
+        skip: POST_PER_PAGE * (page - 1),
+        where:{
+          ...(cat && {catSlug: cat})
+        },
+        orderBy:{
+          createdAt:'desc'
+        }
+      }),
       prisma.post.count({
         where:{
           ...(cat && {catSlug: cat})
