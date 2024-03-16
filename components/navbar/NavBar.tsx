@@ -16,13 +16,31 @@ function NavBar() {
     window.addEventListener("resize", checkWidthAndUpdateOpen);
     return () => window.removeEventListener("resize", checkWidthAndUpdateOpen);
   }, []);
+
+  const [stickyClass, setStickyClass] = useState("");
+
+  function stickNavbar() {
+    let windowHeight = window.scrollY;
+    if (windowHeight >500) {
+      setStickyClass("fixed top-0 w-full shadow-md z-20 m-auto");
+      console.log(stickyClass);
+      
+    } else {
+      setStickyClass("");
+    }
+    
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", stickNavbar);
+  }, []);
   return (
     <div
-      className={`container m-auto py-7 px-3 flex items-center justify-between bg-white`}
+      className={`container m-auto py-7 px-3 flex items-center justify-between bg-white ${stickyClass}`}
     >
       <div>
         <Link href="/" className={` font-bold text-4xl`}>
-          codybyte. 
+          codybyte.
         </Link>
       </div>
       <div className={styles.burger} onClick={() => setOpen(!open)}>

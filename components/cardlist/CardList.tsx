@@ -1,8 +1,6 @@
 import React from "react";
-import styles from "./navbar.module.css";
 import Pagination from "../pagination/Pagination";
 import Card from "../Card/Card";
-import { log } from "console";
 
 interface Post {
   id: string;
@@ -15,14 +13,17 @@ interface Post {
   email: string;
   createdAt: string;
 }
+
 interface Data {
   posts: Post[];
   count: number;
 }
+
 interface Params {
   page: string;
   cat: string;
 }
+
 const getData = async (page: number, cat: string) => {
   const res = await fetch(
     `${process.env.BASE_URL}/api/posts/?cat=${cat || ""}&page=${page}}`,
@@ -47,11 +48,11 @@ async function CardList(params: Params) {
     POST_PER_PAGE * (parseInt(params.page) - 1) + POST_PER_PAGE < data.count;
 
   return (
-    <div className={`container py-10`}>
-      <h1 className={`text-4xl font-bold`}>Posts</h1>
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8 w-full">
+    <div className="container py-10">
+      <h1 className="text-4xl font-bold">Posts</h1>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-10 items-start py-8 w-full">
         {data.posts &&
-          data.posts.map((item: any) => (
+          data.posts.map((item: Post) => (
             <Card
               key={item.id}
               id={item.id}

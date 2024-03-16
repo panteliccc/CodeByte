@@ -85,7 +85,7 @@ async function SinglePage({ params }: { params: Params }) {
         dangerouslySetInnerHTML={desc}
       />
       <div>
-        <Comments />
+        <Comments postSlug={slug} />
       </div>
     </div>
   );
