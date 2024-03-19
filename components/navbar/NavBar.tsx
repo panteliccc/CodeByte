@@ -23,7 +23,6 @@ function NavBar() {
     let windowHeight = window.scrollY;
     if (windowHeight >500) {
       setStickyClass("fixed top-0 w-full shadow-md z-20 m-auto");
-      console.log(stickyClass);
       
     } else {
       setStickyClass("");
