@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import Comment from "../comment/Comment";
 interface Props {
@@ -36,12 +36,27 @@ const fetcher = async (url: string) => {
 };
 function Comments(props: Props) {
   const { status } = useSession();
-
-  const { data, isLoading }: { data: Data[]; isLoading: boolean } = useSWR(
+  const {
+    data,
+    mutate,
+    isLoading,
+  }: { data: Data[]; mutate: any; isLoading: boolean } = useSWR(
     `http://localhost:3000/api/comments?postSlug=${props.postSlug}`,
     fetcher
   );
 
+  const [comment, setComment] = useState("");
+  const handleSubmit = async () => {
+
+    await fetch(`/api/comments`, {
+      method: "POST",
+      body: JSON.stringify({ desc: comment, postSlug: props.postSlug }),
+    });
+    console.log(comment,props.postSlug);
+    
+    setComment("");
+    mutate();
+  };
   return (
     <div className={`container md:w-3/4 w-full`}>
       <h1 className={`text-xl font-bold`}>Comments</h1>
@@ -50,9 +65,12 @@ function Comments(props: Props) {
           <textarea
             placeholder="write a comment"
             className={` w-5/6 border-2 border-text min-h-32`}
+            onChange={e => setComment(e.target.value)}
+            value={comment}
           />
           <button
             className={`bg-text text-white p-5 rounded w-32 text-center cursor-pointer`}
+            onClick={handleSubmit}
           >
             Send
           </button>

@@ -23,7 +23,7 @@ interface Data {
 
 function Comment(props: Props) {
   return (
-    <div>
+    <div key={props.data._id}>
       <div className="flex items-center gap-3 mb-3">
         <div className="relative w-8 h-8 -z-10">
           <Image
