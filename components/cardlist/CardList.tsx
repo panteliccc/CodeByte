@@ -26,7 +26,7 @@ interface Params {
 
 const getData = async (page: number, cat: string) => {
   const res = await fetch(
-    `${process.env.BASE_URL}/api/posts/?cat=${cat || ""}&page=${page}}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/?cat=${cat || ""}&page=${page}}`,
     {
       cache: "no-store",
     }

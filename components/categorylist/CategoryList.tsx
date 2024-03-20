@@ -7,7 +7,7 @@ interface Category {
 }
 
 const getData = async () => {
-  const res = await fetch(`${process.env.BASE_URL}/api/categories`,{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/categories`,{
     cache:"no-store"
   });
 

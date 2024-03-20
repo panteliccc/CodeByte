@@ -26,7 +26,7 @@ interface User {
 }
 
 const getData = async (slug: string) => {
-  const res = await fetch(`${process.env.BASE_URL}/api/posts/${slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${slug}`, {
     cache: "no-store",
   });
 

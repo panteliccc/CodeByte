@@ -43,7 +43,7 @@ function Comments(props: Props) {
     mutate,
     isLoading,
   }: { data: Data[]; mutate: any; isLoading: boolean } = useSWR(
-    `https://codebytee.vercel.app/api/comments?postSlug=${props.postSlug}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${props.postSlug}`,
     fetcher
   );
 
