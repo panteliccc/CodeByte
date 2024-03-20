@@ -31,19 +31,22 @@ const fetcher = async (url: string) => {
     const error = new Error(data.message);
     throw error;
   }
-
   return data;
 };
+
 function Comments(props: Props) {
   const { status } = useSession();
+  
+  
   const {
     data,
     mutate,
     isLoading,
   }: { data: Data[]; mutate: any; isLoading: boolean } = useSWR(
-    `${process.env.BASE_URL}/api/comments?postSlug=${props.postSlug}`,
+    `https://codebytee.vercel.app/api/comments?postSlug=${props.postSlug}`,
     fetcher
   );
+
 
   const [comment, setComment] = useState("");
   const handleSubmit = async () => {
@@ -81,7 +84,7 @@ function Comments(props: Props) {
       <div className="flex flex-col gap-10 py-10">
         {isLoading
           ? "Loading..."
-          : data.map((item) => <Comment key={item._id} data={item} />)}
+          : data?.map((item) => <Comment key={item._id} data={item} />)}
       </div>
     </div>
   );
