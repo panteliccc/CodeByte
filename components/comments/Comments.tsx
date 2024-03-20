@@ -41,7 +41,7 @@ function Comments(props: Props) {
     mutate,
     isLoading,
   }: { data: Data[]; mutate: any; isLoading: boolean } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${props.postSlug}`,
+    `${process.env.BASE_URL}/api/comments?postSlug=${props.postSlug}`,
     fetcher
   );
 
