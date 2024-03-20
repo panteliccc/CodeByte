@@ -49,7 +49,7 @@ async function CardList(params: Params) {
 
   return (
     <div className="container py-10">
-      <h1 className="text-4xl font-bold">Posts</h1>
+      <h1 className="text-4xl font-bold capitalize">{params.cat?`${params.cat} posts`: "Posts"}</h1>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-10 items-start py-8 w-full">
         {data.posts &&
           data.posts.map((item: Post) => (

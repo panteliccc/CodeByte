@@ -46,7 +46,6 @@ function Comments(props: Props) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${props.postSlug}`,
     fetcher
   );
-console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${props.postSlug}`);
 
 
   const [comment, setComment] = useState("");
@@ -61,19 +60,27 @@ console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${props.p
     setComment("");
     mutate();
   };
+  const onKeyDown = (e:any) => {
+    if(e.key == 'Enter') handleSubmit();
+  }
   return (
     <div className={`container md:w-3/4 w-full`}>
       <h1 className={`text-xl font-bold`}>Comments</h1>
       {status === "authenticated" ? (
-        <div className={`flex w-full items-start py-10 gap-5`}>
+        <div className={`flex w-full items-start py-5 gap-5`}>
           <textarea
-            placeholder="write a comment"
-            className={` w-5/6 border-2 border-text min-h-32`}
+            placeholder="Write a comment..."
+            className={`w-full md:w-5/6 border-2 border-text md:min-h-32 rounded sm:w-3/4 p-1`}
             onChange={e => setComment(e.target.value)}
             value={comment}
+            onKeyDown={
+              (e) => {
+                  onKeyDown(e);
+              }
+          }
           />
           <button
-            className={`bg-text text-white p-5 rounded w-32 text-center cursor-pointer`}
+            className={`bg-text text-white p-5 rounded w-32 text-center cursor-pointer hidden md:flex justify-center`}
             onClick={handleSubmit}
           >
             Send
@@ -82,7 +89,7 @@ console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${props.p
       ) : (
         <Link href="/login">Login to write a comment</Link>
       )}
-      <div className="flex flex-col gap-10 py-10">
+      <div className="flex flex-col gap-10 py-5">
         {isLoading
           ? "Loading..."
           : data?.map((item) => <Comment key={item._id} data={item} />)}

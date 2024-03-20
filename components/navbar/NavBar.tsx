@@ -70,7 +70,7 @@ function NavBar() {
             </li>
             <li>
               <Image
-                src="close.svg"
+                src="/close.svg"
                 width={40}
                 height={40}
                 alt="close menu btn"

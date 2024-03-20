@@ -43,9 +43,9 @@ async function SinglePage({ params }: { params: Params }) {
   const desc ={__html:data?.desc};
   return (
     <div className={`container py-7 flex flex-col gap-4`} key={data?.id}>
-      <div className={`flex md:flex-row flex-col-reverse w-full`}>
+      <div className={`flex md:flex-row flex-col-reverse w-full justify-between`}>
         <div className={`flex justify-between flex-col gap-0`}>
-          <h1 className={`text-2xl gap-5 md:gap-0 md:text-5xl font-bold`}>
+          <h1 className={`text-3xl gap-5 md:gap-0 md:text-5xl font-bold py-5 md:py-0`}>
             {data?.title}
           </h1>
           <div className="flex" key={data?.user._id}> 
@@ -75,12 +75,12 @@ async function SinglePage({ params }: { params: Params }) {
             alt="Blog post picture "
             width={800}
             height={400}
-            className={`w-full md:w-3/4`}
+            className={`w-full md:w-1/2`}
           />
         )}
       </div>
       <div
-        className={`text-xl`}
+        className={`text-xl py-5`}
         dangerouslySetInnerHTML={desc}
       />
       <div>
