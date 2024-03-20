@@ -46,6 +46,7 @@ function Comments(props: Props) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${props.postSlug}`,
     fetcher
   );
+console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/comments?postSlug=${props.postSlug}`);
 
 
   const [comment, setComment] = useState("");
