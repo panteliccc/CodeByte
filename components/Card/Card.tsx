@@ -19,7 +19,7 @@ function Card(props: Props) {
   const desc = { __html: `${props.desc.toString().slice(0, 60)}...` };
   return (
     <div
-      className={`relative flex flex-col sm:flex-row xl:flex-col items-start bg-white rounded ${styles.card}`}
+      className={`relative flex flex-col sm:flex-row xl:flex-col bg-white rounded ${styles.card}`}
       key={props.id}
     >
       <div className={`order-1 sm:ml-6 xl:ml-0 p-5 ${styles.content}`}>
@@ -38,9 +38,9 @@ function Card(props: Props) {
         <Image
           src={props?.img}
           alt=""
-          className={`mb-6 shadow-md rounded-lg bg-slate-50 w-full sm:w-[17rem] sm:mb-0 xl:mb-6 xl:w-full ${styles.image}`}
+          className={`mb-6 shadow-md rounded-lg bg-slate-50 w-full sm:w-[18rem] sm:mb-0 xl:mb-6 xl:w-full ${styles.image}`}
           width={1216}
-          height={640}
+          height={100}
         />
       )}
     </div>
