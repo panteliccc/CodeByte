@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/app/utils/connect";
 
-const today = new Date();
-const startDate = new Date(today);
-startDate.setDate(today.getDate() - 30);
+const startDate = new Date();
+startDate.setDate(startDate.getDate() - 30);
 
 export async function GET() {
   try {
@@ -11,8 +10,8 @@ export async function GET() {
       take: 1,
       where: {
         createdAt: {
-          gte: startDate,
-          lte: today,
+          gte: startDate.toISOString(), 
+          lte: new Date().toISOString(), 
         },
       },
       orderBy: {
