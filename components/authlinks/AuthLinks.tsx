@@ -12,9 +12,12 @@ function AuthLinks() {
           Login
         </Link>
       ) : (
-        <div className={`flex gap-5`}>
+        <div className={`flex flex-col gap-5 md:flex-row`}>
           <Link href="/write" className={styles.link}>
             Write
+          </Link>
+          <Link href={"/myposts"} className={styles.link}>
+            My Posts
           </Link>
           <button className={styles.link} onClick={() => signOut()}>
             Logout

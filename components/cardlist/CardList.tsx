@@ -1,6 +1,7 @@
 import React from "react";
 import Pagination from "../pagination/Pagination";
 import Card from "../Card/Card";
+import { headers } from "next/headers";
 
 interface Post {
   id: string;
@@ -22,34 +23,45 @@ interface Data {
 interface Params {
   page: string;
   cat: string;
+  myposts: string;
 }
 
-const getData = async (page: number, cat: string) => {
+const getData = async (page: number, cat: string, myposts: string) => {
+  const cookie = headers().get("cookie");
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/?cat=${cat || ""}&page=${page}}`,
+    myposts
+      ? `http://localhost:3000/api/myposts?page=1`
+      : `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/?cat=${
+          cat || ""
+        }&page=${page}`,
     {
+      method: "GET",
+      headers: {
+        Cookie: cookie || "",
+      },
       cache: "no-store",
     }
   );
-
-  if (!res.ok) {
-    throw new Error("Failed!");
-  }
 
   return res.json();
 };
 
 async function CardList(params: Params) {
-  const data: Data = await getData(parseInt(params.page), params.cat);
+  const data: Data = await getData(
+    parseInt(params.page),
+    params.cat,
+    params.myposts
+  );
 
   const POST_PER_PAGE = 6;
   const hasPerv = POST_PER_PAGE * (parseInt(params.page) - 1) > 0;
   const hasNext =
     POST_PER_PAGE * (parseInt(params.page) - 1) + POST_PER_PAGE < data.count;
-
   return (
     <div className="container py-10">
-      <h1 className="text-4xl font-bold capitalize">{params.cat?`${params.cat} posts`: "Posts"}</h1>
+      <h1 className="text-4xl font-bold capitalize">
+        {params.cat ? `${params.cat} posts` : "Posts"}
+      </h1>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-10 items-start py-8 w-full">
         {data.posts &&
           data.posts.map((item: Post) => (
@@ -67,7 +79,12 @@ async function CardList(params: Params) {
             />
           ))}
       </div>
-      <Pagination page={params.page} cat={params.cat} hasPrev={hasPerv} hasNext={hasNext} />
+      <Pagination
+        page={params.page}
+        cat={params.cat}
+        hasPrev={hasPerv}
+        hasNext={hasNext}
+      />
     </div>
   );
 }

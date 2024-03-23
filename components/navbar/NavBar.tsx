@@ -56,16 +56,6 @@ function NavBar() {
               </Link>
             </li>
             <li>
-              <Link href={"/"} className={styles.link}>
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link href={"/"} className={styles.link}>
-                About
-              </Link>
-            </li>
-            <li>
               <AuthLinks />
             </li>
             <li>
