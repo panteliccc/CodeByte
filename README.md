@@ -1,4 +1,4 @@
-# Next.js 14 Blog Platform
+# CodeByte
 
 Welcome to the Next.js 14 Blog Platform!
 
