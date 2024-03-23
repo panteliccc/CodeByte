@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Pagination from "../pagination/Pagination";
 import Card from "../Card/Card";
 import { headers } from "next/headers";
+import DeletePost from "../deletePost/DeletePost";
 
 interface Post {
   id: string;
@@ -30,7 +31,7 @@ const getData = async (page: number, cat: string, myposts: string) => {
   const cookie = headers().get("cookie");
   const res = await fetch(
     myposts
-      ? `http://localhost:3000/api/myposts?page=1`
+      ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/myposts?page=1`
       : `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/?cat=${
           cat || ""
         }&page=${page}`,
@@ -65,18 +66,28 @@ async function CardList(params: Params) {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-10 items-start py-8 w-full">
         {data.posts &&
           data.posts.map((item: Post) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              slug={item.slug}
-              title={item.title}
-              desc={item.desc}
-              img={item.img}
-              views={item.views}
-              catSlug={item.catSlug}
-              email={item.email}
-              createdAt={item.createdAt}
-            />
+            <Fragment key={item.id}>
+              <div className="relative">
+                {params.myposts === "true" ? (
+                  <DeletePost id={item.id} />
+                  
+                ) : (
+                  <></>
+                )}
+                <Card
+                  key={item.id}
+                  id={item.id}
+                  slug={item.slug}
+                  title={item.title}
+                  desc={item.desc}
+                  img={item.img}
+                  views={item.views}
+                  catSlug={item.catSlug}
+                  email={item.email}
+                  createdAt={item.createdAt}
+                />
+              </div>
+            </Fragment>
           ))}
       </div>
       <Pagination
