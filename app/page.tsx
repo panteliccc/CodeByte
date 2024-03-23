@@ -16,7 +16,7 @@ export default function Home({ searchParams }: { searchParams: SearchParams }) {
       <Featured />
       <CategoryList />
       <div className="">
-        <CardList page={page} cat={cat}/>
+        <CardList page={page} cat={cat} myposts={false}/>
       </div>
     </div>
   );
