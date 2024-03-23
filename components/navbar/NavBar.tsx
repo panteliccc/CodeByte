@@ -22,7 +22,7 @@ function NavBar() {
   function stickNavbar() {
     let windowHeight = window.scrollY;
     if (windowHeight >500) {
-      setStickyClass("fixed top-0 w-full shadow-md z-20 m-auto");
+      setStickyClass("fixed top-0 w-full shadow-md m-auto");
       
     } else {
       setStickyClass("");
@@ -35,7 +35,7 @@ function NavBar() {
   }, []);
   return (
     <div
-      className={`container m-auto py-7 px-3 flex items-center justify-between bg-white ${stickyClass}`}
+      className={`container m-auto py-7 px-3 flex items-center justify-between bg-white  ${stickyClass} `}
     >
       <div>
         <Link href="/" className={` font-bold text-4xl`}>
@@ -48,7 +48,7 @@ function NavBar() {
         <div className={styles.line}></div>
       </div>
       {open && (
-        <div className={styles.links}>
+        <div className={`${styles.links} z-50 h-screen md:h-auto`}>
           <ul className={`flex gap-5 `}>
             <li>
               <Link href={"/"} className={styles.link}>

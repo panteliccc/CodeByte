@@ -57,10 +57,15 @@ function Write() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             fetchData(downloadURL);
+            setValue("");
+            setTitle("");
           });
         }
       );
     }else{
+      fetchData("");
+      setValue("");
+      setTitle("");
       setMedia("");
     }
   };

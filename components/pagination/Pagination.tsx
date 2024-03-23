@@ -14,7 +14,7 @@ function Pagination(props:Props) {
   return (
     <div className={`container flex justify-center gap-4`}>
       <button
-        className={`bg-text text-white p-5 rounded-md w-36 text-center cursor-pointer disabled:opacity-65 disabled:cursor-auto`}
+        className={`bg-text text-white p-5 rounded-md w-36 text-center cursor-pointer disabled:opacity-65 disabled:cursor-auto z-0`}
         disabled={!props.hasPrev}
         onClick={()=>router.push(`?cat=${props.cat || ""}&page=${parseInt(props.page)-1}`)}
       >
