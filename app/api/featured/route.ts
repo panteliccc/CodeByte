@@ -1,19 +1,11 @@
 import { NextResponse } from "next/server";
 import prisma from "@/app/utils/connect";
 
-const startDate = new Date();
-startDate.setDate(startDate.getDate() - 30);
 
 export async function GET() {
   try {
     const post = await prisma.post.findFirst({
       take: 1,
-      where: {
-        createdAt: {
-          gte: startDate.toISOString(), 
-          lte: new Date().toISOString(), 
-        },
-      },
       orderBy: {
         createdAt: "desc",
       },
