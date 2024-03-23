@@ -39,7 +39,7 @@ function NavBar() {
     >
       <div>
         <Link href="/" className={` font-bold text-4xl`}>
-          codybyte.
+          codebyte.
         </Link>
       </div>
       <div className={styles.burger} onClick={() => setOpen(!open)}>
