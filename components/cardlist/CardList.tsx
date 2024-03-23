@@ -24,10 +24,10 @@ interface Data {
 interface Params {
   page: string;
   cat: string;
-  myposts: string;
+  myposts: boolean;
 }
 
-const getData = async (page: number, cat: string, myposts: string) => {
+const getData = async (page: number, cat: string, myposts: boolean) => {
   const cookie = headers().get("cookie");
   const res = await fetch(
     myposts
@@ -68,7 +68,7 @@ async function CardList(params: Params) {
           data.posts.map((item: Post) => (
             <Fragment key={item.id}>
               <div className="relative">
-                {params.myposts === "true" ? (
+                {params.myposts === true ? (
                   <DeletePost id={item.id} />
                   
                 ) : (

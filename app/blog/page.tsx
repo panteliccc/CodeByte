@@ -11,7 +11,7 @@ function Blog({ searchParams }: { searchParams: SearchParams }) {
   const cat = searchParams.cat || "";
   return (
     <div className={`container`}>
-      <CardList page={page} cat={cat} />
+      <CardList page={page} cat={cat} myposts={false}/>
     </div>
   );
 }
