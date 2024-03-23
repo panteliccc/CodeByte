@@ -11,13 +11,13 @@ To get started with the platform, follow these steps:
 1. Clone this repository to your local system:
 
     ```bash
-    git clone <repository_URL>
+    git clone https://github.com/panteliccc/CodeByte.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd nextjs-blog-platform
+    cd CodeByte
     ```
 
 3. Install all the required dependencies using npm:
